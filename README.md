@@ -1,13 +1,23 @@
-# api-guide
+# Local Heroes API Guide
 
-## Documentation
+Welcome to the Local Heroes developer page. Our API allows affiliates to send leads directly to the Local Heroes platform.
+
+## Before integrating you should:
+
+Have a commercial agreement with us regarding the leads you will send
+Have an understanding of which taxonomies you are subscribed to
+Have a Partner ID
+If you have any questions, please email apiteam@localheroes.com or speak to your Local Heroes account manager.
+
+## Getting started
 * [Create Keys](#create-keys)
-* [JWT](#jwt)
+* [JWT Structure](#jwt-structure)
 * [Create Job API](#create-job-api)
-* [Create Job API mock](#create-job-api-mock)
+* [Create Job API sandbox](#create-job-api-sandox)
 * [Response Codes](#response-codes)
 
 #### Create keys
+To authenticate against our API you will need JSON Web Tokens (JWT) keys. To get started, please generate two pairs of public and private keys - one for sandbox and one for production. When you are ready, share your public keys with us specifying which will be used for sandbox and which will be used for production.
 
 ```bash
 ssh-keygen -t rsa -b 2048 -f ./jwt.key
@@ -17,7 +27,7 @@ cat jwt.key
 cat jwt.key.pub
 ```
 
-####  JWT
+####  JWT Structure
 
 - Header
 ```json
@@ -36,6 +46,7 @@ cat jwt.key.pub
 ```
 
 #### Create Job API
+To create a New Job you'll need to use a graph ql mutation. We can recommend the use of GraphQL Playground.
 ```graphql
 mutation {
   createJob(
@@ -71,20 +82,21 @@ mutation {
 | job.postCode | NO | The space in the middle is not necessary  |
 | job.address | NO | Limit: 255 characters |
 | job.description | YES | Limit: 1024 characters |
-| job.partnerId | NO | Provided by LocalHeroes |
-| job.jobType | YES |  |
-| customer.mobile | NO |  |
-| customer.name | NO |  |
+| job.taxonomyId | NO | Provided by LocalHeroes |
+|customer.mobile	|NO|	Should be UK format beginning 07|
+|customer.name	|NO|	Name of customer|
+|customer.email	|NO	|Email of customer for contact purposes|
+#### Create Job API sandbox
 
-#### Create Job API mock
+We recommend that you first try creating a Job using our API Sandbox.
 
-Special postcodes for error triggering 
+We use the following Special postcodes for error triggering:
 
 | PostCode  | Error |
 | ------------- | ------------- |
 | SA99 1AA  | Area not covered  |
 | SA99 1AB  | Daily jobs creation limit reached  |
-
+|SA99 1AC|	Request not authorized|
 
 ### Response Codes
 
@@ -115,12 +127,12 @@ Error messages are returned in JSON format. For example, an error might look lik
 
 |Code|Text|Description|
 |--- |--- |--- |
-|100|Daily jobs creation limit reached|Daily jobs creation limit reached|
-|101|Area not covered|The area specified in the request is not covered by our traders|
-|102|Job Type not allowed||
-|104|Request not authorized||
-|105|Invalid Token||
-|106|Access Token Expired||
-|107|Access Denied||
-|108|Keys not found||
-|109|JWT verification error||
+|100|	Daily jobs creation limit reached|	Daily jobs creation limit reached
+|101|	Area not covered|	The area specified in the request is not covered by our traders
+|104|	Request not authorized|	There is a problem with your JWT
+|105|	Invalid Token|	There is a problem with your JWT
+|106|	Access Token Expired|	The JWT provided is older than 30 seconds
+|107|	Access Denied|	JWT format correct but incorrect permisions
+|108|	Keys not found|	Keys must be provided and the correct ones
+|109|	JWT verification error|	This is a generic error on the JWT
+|110|	Email invalid|	Email is invalid or has not been provided
