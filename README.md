@@ -4,10 +4,10 @@ Welcome to the Local Heroes developer page. Our API allows affiliates to send le
 
 ## Before integrating you should:
 
-Have a commercial agreement with us regarding the leads you will send
-Have an understanding of which taxonomies you are subscribed to
-Have a Partner ID
-If you have any questions, please email apiteam@localheroes.com or speak to your Local Heroes account manager.
+-Have a commercial agreement with us regarding the leads you will send
+-Have an understanding of which taxonomies you are subscribed to
+-Have a Partner ID
+-If you have any questions, please email apiteam@localheroes.com or speak to your Local Heroes account manager.
 
 ## Getting started
 * [Create Keys](#create-keys)
