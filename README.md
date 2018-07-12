@@ -7,7 +7,9 @@ Welcome to the Local Heroes developer page. Our API allows affiliates to send le
 * Have a commercial agreement with us regarding the leads you will send
 * Have an understanding of which taxonomies you are subscribed to
 * Have a Partner ID
-* If you have any questions, please email apiteam@localheroes.com or speak to your Local Heroes account manager.
+* Have a basic understanding of [GraphQL](https://graphql.org/) and [JWT](https://jwt.io/)
+
+If you have any questions, please email apiteam@localheroes.com or speak to your Local Heroes account manager.
 
 ## Getting started
 * [Create Keys](#create-keys)
@@ -46,7 +48,7 @@ cat jwt.key.pub
 ```
 
 #### Create Job API
-To create a New Job you'll need to use a graph ql mutation. We can recommend the use of GraphQL Playground.
+To create a New Job you'll need to use a [GraphQL](https://graphql.org/) mutation. We can recommend the use of [GraphQL Playground](https://github.com/prismagraphql/graphql-playground).
 ```graphql
 mutation {
   createJob(
