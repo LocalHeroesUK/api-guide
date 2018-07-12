@@ -13,7 +13,7 @@ Welcome to the Local Heroes developer page. Our API allows affiliates to send le
 * [Create Keys](#create-keys)
 * [JWT Structure](#jwt-structure)
 * [Create Job API](#create-job-api)
-* [Create Job API sandbox](#create-job-api-sandox)
+* [Create Job API sandbox](#create-job-api-sandbox)
 * [Response Codes](#response-codes)
 
 #### Create keys
