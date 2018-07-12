@@ -89,7 +89,6 @@ mutation {
 #### Create Job API sandbox
 
 We recommend that you first try creating a Job using our API Sandbox.
-
 We use the following Special postcodes for error triggering:
 
 | PostCode  | Error |
