@@ -58,6 +58,7 @@ N.b. The JWT will only work for 30 seconds before it expires.
 
 #### Create Job API
 To create a New Job you'll need to use a [GraphQL](https://graphql.org/) mutation. We can recommend the use of [GraphQL Playground](https://github.com/prismagraphql/graphql-playground).
+
 ```graphql
 mutation {
   createJob(
@@ -80,12 +81,9 @@ mutation {
   }
 }
 ```
-- Header request
-```json
-    {
-      "Authorization" : "Bearer JWT_TOKEN_HERE"
-    }
-```
+HTTP Headers
+
+- `Authorization: Bearer JWT_TOKEN_HERE`
 
 | Data  | Optional | Notes |
 | ------------- | ------------- | ------------- |
@@ -106,6 +104,24 @@ We use the following Special postcodes for error triggering:
 | SA99 1AA  | Area not covered  |
 | SA99 1AB  | Daily jobs creation limit reached  |
 |SA99 1AC|	Request not authorized|
+
+#### Check coverage
+
+If you would like to check that we can cover a particular taxonomy item in a postcode then you can use our `coverageByTaxonomy` query.
+
+E.g. 
+```graphql
+query coverageByTaxonomy{
+  coverageByTaxonomy(area:"sa99", taxonomyId:"lhrn:uk:taxonomy:affiliate/xxxx")
+}
+```
+
+You need to use the authorization header, as described above.
+
+HTTP Headers
+
+- `Authorization: Bearer JWT_TOKEN_HERE`
+
 
 ### Response Codes
 
