@@ -13,7 +13,7 @@ const now = Math.floor(Date.now() / 1000);
 
 let JWTPayload = {
   iss: 'partner',
-  aud: 'stark',
+  aud: 'localheroes',
   iat: now,
   exp: now + 60,
   sub: partnerId,
