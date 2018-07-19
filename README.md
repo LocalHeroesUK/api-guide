@@ -19,26 +19,27 @@ If you have any questions, please email apiteam@localheroes.com or speak to your
 * [Response Codes](#response-codes)
 
 #### Create keys
-To authenticate against our API you will need JSON Web Tokens (JWT) keys. To get started, please generate two pairs of public and private keys - one for sandbox and one for production. When you are ready, share your public keys with us specifying which will be used for sandbox and which will be used for production.
+To authenticate against our API you will need to create a JSON Web Token (JWT) signed with your private key. To get started, please generate two pairs of public and private keys - one for sandbox and one for production. When you are ready, share your _public_ keys with us specifying which will be used for sandbox and which will be used for production.
 
 ```bash
-ssh-keygen -t rsa -b 2048 -f ./jwt.key
+$ ssh-keygen -t rsa -b 2048 -f ./jwt.key
 # Don't add passphrase!!
-openssl rsa -in jwt.key -pubout -outform PEM -out jwt.key.pub
-cat jwt.key
-cat jwt.key.pub
+$ openssl rsa -in jwt.key -pubout -outform PEM -out jwt.key.pub
+$ cat jwt.key
+$ cat jwt.key.pub
 ```
 
 ####  JWT Structure
 
-- Header
+Header
 ```json
 {
   "alg": "RS256",
   "typ": "JWT"
 }
 ```
-- Payload
+
+Payload
 ```json
 {
   "iss": "partner",
@@ -46,6 +47,14 @@ cat jwt.key.pub
   "iat": 1516239022
 }
 ```
+
+If you are using node, you can use our demo tool [generateJWT.js](./generateJWT.js) to generate your JWT.  You must have the private key `jwt.key` in the same folder.
+
+```bash
+$ node genterateJWT.js
+```
+
+N.b. The JWT will only work for 30 seconds before it expires.
 
 #### Create Job API
 To create a New Job you'll need to use a [GraphQL](https://graphql.org/) mutation. We can recommend the use of [GraphQL Playground](https://github.com/prismagraphql/graphql-playground).
@@ -57,14 +66,13 @@ mutation {
         description: "DESCRIPTION FOR THE JOB"
         address: "CUSTOMER_ADDRESS"
         postCode: "SA99 1AA"
-        partnerId: "ID_PARTNER"
         jobType: STANDARD
-        ...
+        taxonomyId: "lhrn:uk:taxonomy:affiliate/xxx"
       }
       customer:{
         name: "CUSTOMER_NAME"
         mobile: "CUSTOMER_CONTACT"
-        ...
+        email: "customer@test.com"
       }
     }
   ){
