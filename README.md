@@ -122,6 +122,24 @@ HTTP Headers
 
 - `Authorization: Bearer JWT_TOKEN_HERE`
 
+The response can be one of three values: -
+
+* `true` - We do have coverage
+* `false` - We do not have coverage
+* An error condition reported in the error object. E.g. 'high demand'.  In exceptional circumstances we may report high demand for a particular speciality in a localized area.  If this happens we will not take on any more jobs, as the chances of finding a trader are low.  It is better that we let the customer know ASAP, so that they can look elsewhere.
+
+#### Coverage sandbox
+
+We recommend that you first try checking coverage using our API Sandbox.
+We use the following special postcodes and taxonomies for coverage checking:
+
+| TaxonomyId  | PostCode | Response |
+| ------------| -------- | -------- |
+| ---         | SA99 |  Error: High demand  |
+| taxonomy/1  | ---  | true  |
+| taxonomy/2<sup>*</sup> | --- | false |
+
+<sup>*</sup> Or any other taxonomy apart from `taxonomy/1`
 
 ### Response Codes
 
