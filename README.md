@@ -69,6 +69,11 @@ mutation {
         postCode: "SA99 1AA"
         jobType: STANDARD
         taxonomyId: "lhrn:uk:taxonomy:affiliate/xxx"
+        timeSlot: {
+          startTime: 8
+          endTime: 12
+          date: "2018-06-13T00:00:00Z"
+        }
       }
       customer:{
         name: "CUSTOMER_NAME"
