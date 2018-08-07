@@ -1,6 +1,6 @@
 # Local Heroes API Guide
 
-Welcome to the Local Heroes developer page. Our API allows affiliates to send leads directly to the Local Heroes platform.
+Welcome to the Local Heroes developer page. Our API allows affiliates to send leads directly to the Local Heroes platform. Our API uses GraphQL over HTTPS, and is secured using JSON Web Tokens (JWTs).
 
 ## Before integrating you should:
 
@@ -31,6 +31,8 @@ $ cat jwt.key.pub
 
 ####  JWT Structure
 
+To access our API you will need to create a JWT that you will pass as a bearer token in your HTTPS requests. The format of the JWT is: -
+
 Header
 ```json
 {
@@ -56,8 +58,67 @@ $ node generateJWT.js
 
 N.b. The JWT will only work for 30 seconds before it expires.
 
+If you are using a different programming language then visit [jwt.io](https://jwt.io/) for other library implementations.
+
+#### URL
+
+The URL for all API requests is the same.  The content of your POST request describes the action you want to take: -
+
+`https://services.localheroes.com/graphql`
+
+
+#### Check coverage
+
+To check that we can cover a particular taxonomy item in a postcode use our `coverageByTaxonomy` query.
+
+E.g. 
+```graphql
+query coverageByTaxonomy{
+  coverageByTaxonomy(area:"sa99", taxonomyId:"lhrn:uk:taxonomy:affiliate/xxxx")
+}
+```
+
+You need to use the authorization header, as described above.
+
+HTTP Headers
+
+- `Authorization: Bearer JWT_TOKEN_HERE`
+
+The response can be one of three values: -
+
+* `true` - We do have coverage
+* `false` - We do not have coverage
+* An error condition reported in the error object. E.g. 'high demand'.  In exceptional circumstances we may report high demand for a particular speciality in a localized area.  If this happens we will not take on any more jobs, as the chances of finding a trader are low.  It is better that we let the customer know ASAP, so that they can look elsewhere.
+
+#### Coverage sandbox
+
+We recommend that you first try checking coverage using our API Sandbox.
+We use the following special postcodes and taxonomies for coverage checking:
+
+| TaxonomyId  | PostCode | Response |
+| ------------| -------- | -------- |
+| ---         | SA99 |  Error: High demand  |
+| taxonomy/1  | ---  | true  |
+| taxonomy/2<sup>*</sup> | --- | false |
+
+<sup>*</sup> Or any other taxonomy apart from `taxonomy/1`
+
+Here is an example of how to check coverage using the `curl` command: -
+
+```bash
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer xxxxx.xxxxx.xxxxx" -d '{ "query" : "query coverageByTaxonomy{ coverageByTaxonomy(area:\"sa99\", taxonomyId:\"lhrn:uk:taxonomy:affiliate/xxxx\")}" }
+' "https://services.localheroes.com/graphql"
+
+```
+
+For simplicity I have placed the variables inline with the GraphQL query.  In practice it is better to separate out "query" and "variables" as separate properties in your JSON payload.
+
+N.b. you need to replace xxxxx.xxxxx.xxxxx with your JWT created above.
+
+We recommend using the [GraphQL Playground](https://github.com/prismagraphql/graphql-playground) tool for testing your GraphQL queries. 
+
 #### Create Job API
-To create a New Job you'll need to use a [GraphQL](https://graphql.org/) mutation. We can recommend the use of [GraphQL Playground](https://github.com/prismagraphql/graphql-playground).
+To create a New Job you'll need to use a [GraphQL](https://graphql.org/) mutation.
 
 ```graphql
 mutation {
@@ -114,41 +175,6 @@ We use the following Special postcodes for error triggering:
 | SA99 1AB  | Daily jobs creation limit reached  |
 |SA99 1AC|	Request not authorized|
 
-#### Check coverage
-
-If you would like to check that we can cover a particular taxonomy item in a postcode then you can use our `coverageByTaxonomy` query.
-
-E.g. 
-```graphql
-query coverageByTaxonomy{
-  coverageByTaxonomy(area:"sa99", taxonomyId:"lhrn:uk:taxonomy:affiliate/xxxx")
-}
-```
-
-You need to use the authorization header, as described above.
-
-HTTP Headers
-
-- `Authorization: Bearer JWT_TOKEN_HERE`
-
-The response can be one of three values: -
-
-* `true` - We do have coverage
-* `false` - We do not have coverage
-* An error condition reported in the error object. E.g. 'high demand'.  In exceptional circumstances we may report high demand for a particular speciality in a localized area.  If this happens we will not take on any more jobs, as the chances of finding a trader are low.  It is better that we let the customer know ASAP, so that they can look elsewhere.
-
-#### Coverage sandbox
-
-We recommend that you first try checking coverage using our API Sandbox.
-We use the following special postcodes and taxonomies for coverage checking:
-
-| TaxonomyId  | PostCode | Response |
-| ------------| -------- | -------- |
-| ---         | SA99 |  Error: High demand  |
-| taxonomy/1  | ---  | true  |
-| taxonomy/2<sup>*</sup> | --- | false |
-
-<sup>*</sup> Or any other taxonomy apart from `taxonomy/1`
 
 ### Response Codes
 
