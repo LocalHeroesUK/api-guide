@@ -30,7 +30,7 @@ console.log(`
 
 \x1b[2mauthorization :\x1b[0m Bearer ${token}
 
-Example:
+\x1b[32mExample curl command:\x1b[0m
 
 \x1b[2mcurl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" -d '{ "query" : "query coverageByTaxonomy{ coverageByTaxonomy(area:\\"sa99\\", taxonomyId:\\"taxonomy/1\\")}" }' "https://services.localheroes.com/graphql"\x1b[0m
 `);
