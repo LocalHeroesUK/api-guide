@@ -50,13 +50,7 @@ Payload
 }
 ```
 
-If you are using node, you can use our demo tool [generateJWT.js](./generateJWT.js) to generate your JWT.  You must have the private key `jwt.key` in the same folder.
-
-```bash
-$ node generateJWT.js
-```
-
-N.b. The JWT will only work for 30 seconds before it expires.
+If you are using nodeJS, you can use our [demo tool](./examples/node) to generate your JWT.
 
 If you are using a different programming language then visit [jwt.io](https://jwt.io/) for other library implementations.
 
