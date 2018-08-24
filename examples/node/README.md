@@ -9,14 +9,6 @@ $ npm i
 $ node ./generateJWT.js
 ```
 
-If you want to copy the result straight to the clipboard you can run it as follows: -
-
-```bash
-$ npm i
-$ node ./generateJWT.js | pbcopy
-```
-
-
 Sample output: -
 ```bash
 15:10 $ node ./generateJWT.js
