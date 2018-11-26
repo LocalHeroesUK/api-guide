@@ -29,6 +29,8 @@ $ cat jwt.key
 $ cat jwt.key.pub
 ```
 
+If this doesn't work on your machine you might like to try using [Docker](./docker-keygen.md).
+
 ####  JWT Structure
 
 To access our API you will need to create a JWT that you will pass as a bearer token in your HTTPS requests. The format of the JWT is: -
