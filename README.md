@@ -158,7 +158,9 @@ HTTP Headers
 | job.timeSlot.endTime | NO | The end time of the timeSlot - If none given then value should be 'TBC'|
 | job.timeSlot.date | YES | The date of the timeslot |
 |customer.mobile	|NO|	Mobile and landline numbers accepted|
-|customer.name	|NO|	Name of customer|
+|customer.name	*old (will deprecate on 30/08/19) |NO|	Name of customer|
+|customer.firstName	*new |NO|	First name of customer|
+|customer.lastName	*new |NO|	Last name of customer|
 |customer.email	|NO	|Email of customer for contact purposes|
 #### Create Job API sandbox
 
