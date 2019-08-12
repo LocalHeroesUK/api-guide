@@ -127,8 +127,8 @@ mutation {
         jobType: STANDARD
         taxonomyId: "lhrn:uk:taxonomy:affiliate/xxx"
         timeSlot: {
-          startTime: 8
-          endTime: 12
+          timeSlotStart: "2018-06-13T07:00:00Z"
+          endTime: "2018-06-13T11:00:00Z"
           date: "2018-06-13T00:00:00Z"
         }
       }
