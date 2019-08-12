@@ -154,8 +154,8 @@ HTTP Headers
 | job.description | YES | Limit: 1024 characters |
 | job.taxonomyId | NO | Provided by LocalHeroes |
 | job.timeSlot | YES | The object containing the timeSlot informations|
-| job.timeSlot.startTime | NO | The start time of the timeSlot - If none given then value should be 'TBC' |
-| job.timeSlot.endTime | NO | The end time of the timeSlot - If none given then value should be 'TBC'|
+| job.timeSlot.timeSlotStart | NO | The start time of the timeSlot - If none given then value should be 'TBC' |
+| job.timeSlot.timeSlotEnd | NO | The end time of the timeSlot - If none given then value should be 'TBC'|
 | job.timeSlot.date | YES | The date of the timeslot |
 |customer.mobile	|NO|	Mobile and landline numbers accepted|
 |customer.name |NO|	Name of customer|
