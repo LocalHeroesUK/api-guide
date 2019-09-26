@@ -24,9 +24,8 @@ To authenticate against our API you will need to create a JSON Web Token (JWT) s
 ```bash
 $ ssh-keygen -t rsa -b 2048 -f ./jwt.key
 # Don't add passphrase!!
-$ openssl rsa -in jwt.key -pubout -outform PEM -out jwt.key.pub
 $ cat jwt.key
-$ cat jwt.key.pub
+$ ssh-keygen -f jwt.key.pub -e -m pem
 ```
 
 If this doesn't work on your machine you might like to try using [Docker](./docker-keygen.md).
