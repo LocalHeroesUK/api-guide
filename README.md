@@ -22,10 +22,10 @@ If you have any questions, please email apiteam@localheroes.com or speak to your
 To authenticate against our API you will need to create a JSON Web Token (JWT) signed with your private key. To get started, please generate two pairs of public and private keys - one for sandbox and one for production. When you are ready, share your _public_ keys with us specifying which will be used for sandbox and which will be used for production.
 
 ```bash
-$ ssh-keygen -t rsa -b 2048 -f ./jwt.key
+$ ssh-keygen -t rsa -b 2048 -f ./jwt.key -m PEM
 # Don't add passphrase!!
 $ cat jwt.key
-$ ssh-keygen -f jwt.key.pub -e -m pem
+$ cat jwt.key.pub
 ```
 
 If this doesn't work on your machine you might like to try using [Docker](./docker-keygen.md).
