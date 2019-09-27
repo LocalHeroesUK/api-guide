@@ -28,7 +28,7 @@ $ cat jwt.key
 $ ssh-keygen -f jwt.key.pub -e -m pem
 ```
 
-If this doesn't work on your machine you might like to try using [Docker](./docker-keygen.md).
+If this doesn't work on your machine you might like to try using [Docker](./docker-keygen.md). Keys should have same format as in [examples/keys](./examples/keys)
 
 ####  JWT Structure
 
