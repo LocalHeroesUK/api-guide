@@ -32,7 +32,7 @@ If this doesn't work on your machine you might like to try using [Docker](./dock
 
 ####  JWT Structure
 
-To access our API you will need to create a JWT that you will pass as a bearer token in your HTTPS requests. The format of the JWT is: -
+To access our API you will need to create a JWT that you will pass as a bearer token in your HTTPS requests. This JWT has to be generated with every new request. The format of the JWT is: -
 
 Header
 ```json
