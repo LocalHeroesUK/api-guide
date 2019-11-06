@@ -132,7 +132,8 @@ mutation {
         }
       }
       customer:{
-        name: "CUSTOMER_NAME"
+        firstName: "CUSTOMER_FIRSTNAME"
+        lastName: "CUSTOMER_LASTNAME"
         mobile: "CUSTOMER_CONTACT"
         email: "customer@test.com"
       }
@@ -157,7 +158,8 @@ HTTP Headers
 | job.timeSlot.timeSlotEnd | NO | The end time of the timeSlot - If none given then value should be 'TBC'|
 | job.timeSlot.date | YES | The date of the timeslot |
 |customer.mobile	|NO|	Mobile and landline numbers accepted|
-|customer.name |NO|	Name of customer|
+|customer.firstName |NO|	First name of customer|
+|customer.lastName |NO|	Last name of customer|
 |customer.email	|NO	|Email of customer for contact purposes|
 #### Create Job API sandbox
 
