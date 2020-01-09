@@ -47,7 +47,8 @@ Payload
 {
   "iss": "partner",
   "lh:partner": "ID_PARTNER",
-  "iat": 1516239022
+  "iat": 1516239022,
+  "environment": "SANDBOX || PRODUCTION"
 }
 ```
 
