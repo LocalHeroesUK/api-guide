@@ -260,22 +260,21 @@ Error messages are returned in JSON format. For example, an error might look lik
 
 ### Authentication Error Codes
 
-The error code can be found in `errors[index].code`
+The error code can be found in `errors[index].extensions.code`
+The error message can be found in `errors[index].message`
 
 |Code|Text|Description|
 |--- |--- |--- |
-|100|	Daily jobs creation limit reached|  Daily jobs creation limit reached
-|101|	Area not covered|	The area specified in the request is not covered by our traders
-|104|	Request not authorized| There is a problem with your JWT
-|105|	Invalid Token|  There is a problem with your JWT
-|106|	Access Token Expired|	The JWT provided is older than 30 seconds
-|107|	Access Denied|	JWT format correct but incorrect permisions
-|108|	Keys not found|	Keys must be provided and the correct ones
-|109|	JWT verification error|	This is a generic error on the JWT
+|INVALID_ACCESS_TOKEN|  Invalid token|  Your access token is invalid or missing
+|EXPIRED_ACCESS_TOKEN|  Access Token Expired| The JWT provided is older than 30 seconds
+|FORBIDDEN| Access denied|  JWT format correct but incorrect permisions
+|KEYS_NOT_FOUND|  Keys not found| Keys must be provided and the correct ones
+|UNKNOWN_ERROR| various messages| An unknown error occurred, please check the error message for more information
 
 ### Logic Error Codes
 
 The error code can be found in `errors[index].extensions.code`
+The error message can be found in `errors[index].message`
 
 |Code|Text|Description|
 |--- |--- |--- |
