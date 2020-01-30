@@ -173,9 +173,8 @@ Here is an example of the variables you have to pass to that mutation:
 - `Referrer: YOUR_COMPANY_NAME`
 - `Content-Type: application/json`
 
-#### Example
+#### Example with JavaScript
 
-`data` here should be your 
 ```js
 const mutation = `
   mutation {TO_BE_CHANGED}_createJob($input: job_InputCreateJob!) {
