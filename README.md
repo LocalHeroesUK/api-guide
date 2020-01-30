@@ -173,7 +173,8 @@ Here is an example of the variables you have to pass to that mutation:
 - `Referrer: YOUR_COMPANY_NAME`
 - `Content-Type: application/json`
 
-#### Example of calling the create job API with Javascript
+#### Example
+
 `data` here should be your 
 ```js
 const mutation = `
